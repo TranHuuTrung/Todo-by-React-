@@ -3,7 +3,7 @@ import './App.css';
 import HeaderLogo from './components/HeaderLogo';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import $ from 'jquery';
+// import $ from 'jquery';
 
 class App extends Component {
   constructor(props){
@@ -27,7 +27,6 @@ class App extends Component {
     });
   }
   onSubmitSignUp = (data) =>{
-    if ($("form#fSignUp").valid()){
       var { userInfos } = this.state;
       data.id = this.GenarateID();
       userInfos.push(data);
@@ -35,7 +34,6 @@ class App extends Component {
         userInfos: userInfos
       });
       localStorage.setItem('userInfos', JSON.stringify(userInfos));
-    }
     
   }
   componentWillMount() {
