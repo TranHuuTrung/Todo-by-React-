@@ -5,15 +5,8 @@ class SignIn extends Component {
         this.state= {
             email:'',
             password: '',
-            // isLogin: false,//0 bat dau, 1,login 2,error
         }
     }
-    // componentWillReceiveProps(nextProps){
-    //         this.setState({
-    //             isLogin : this.props.isSuccess
-    //         });
-            
-    // }
     onReturnSignUp=() =>{
         this.props.onActionChoose(1);
     }
@@ -32,18 +25,9 @@ class SignIn extends Component {
         })
     }
     onSubmitSignIn = (event) =>{
-        // var { isLogin } = this.state;
         event.preventDefault();
         this.props.onSubmitSignIn(this.state);
         this.onClear();
-        // if (isLogin) {
-        //     this.onClear();
-        // } else {
-        //     //bao loi 
-        // }
-        
-        // neu login thi setState cua isStatusLogin = 1
-        //nguoc lai thi isStatusLogin = 2
     }
   render() {
     return ( 
@@ -93,8 +77,14 @@ class SignIn extends Component {
                             type="submit"
                             className="btn btn-success"
                         >Login
-                        </button> &nbsp;
-                        <button type="submit" className="btn btn-danger">Reset</button>
+                        </button> 
+                        &nbsp;
+                        <button 
+                            type="button" 
+                            className="btn btn-danger"
+                            onClick = { this.onClear }
+                        >Reset
+                        </button>
                         {/* <div className="alert alert-success mt-20">
                             <a className="close" data-dismiss="alert">×</a>You are Login!
                         </div> */}

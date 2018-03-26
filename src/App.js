@@ -3,11 +3,13 @@ import './App.css';
 import HeaderLogo from './components/HeaderLogo';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
+import $ from 'jquery';
+
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      userInfo : [], // luu thong tin duoi local
+      userInfos : [], // luu thong tin duoi local
       isSignUp : false,
       isSignIn: false
     }
@@ -25,34 +27,37 @@ class App extends Component {
     });
   }
   onSubmitSignUp = (data) =>{
-    var { userInfo } = this.state;
-    data.id = this.GenarateID();
-    userInfo.push(data);
-    this.setState({
-      userInfo : userInfo
-    });
-    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    if ($("form#fSignUp").valid()){
+      var { userInfos } = this.state;
+      data.id = this.GenarateID();
+      userInfos.push(data);
+      this.setState({
+        userInfos: userInfos
+      });
+      localStorage.setItem('userInfos', JSON.stringify(userInfos));
+    }
+    
   }
   componentWillMount() {
-    if (localStorage && localStorage.getItem('userInfo')) {
-      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (localStorage && localStorage.getItem('userInfos')) {
+      var userInfos = JSON.parse(localStorage.getItem('userInfos'));
       this.setState({
-        userInfo: userInfo
+        userInfos: userInfos
       });
     }
   }
   componentWillReceiveProps(nextProps){
-    if (localStorage && localStorage.getItem('userInfo')) {
-      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (localStorage && localStorage.getItem('userInfos')) {
+      var userInfos = JSON.parse(localStorage.getItem('userInfos'));
       this.setState({
-        userInfo: userInfo
+        userInfos: userInfos
       });
     }
   }
   onSubmitSignIn = (data) => {
-    var { userInfo} = this.state;
+    var { userInfos} = this.state;
     var isLogin = false;
-    userInfo.forEach((user,index)=>{
+    userInfos.forEach((user,index)=>{
       if ((user.email === data.email) && (user.password === data.password)){
           isLogin = true;
         }

@@ -36,11 +36,11 @@ class SignUp extends Component {
                     <h3 className="panel-title">Create New Account </h3>
                 </div>
                 <div className="panel-body"> 
-                   <form onSubmit = { this.onSubmitSignUp }>
-                        {/* <div className="alert alert-danger">
+                   <form id="fSingUp" onSubmit = { this.onSubmitSignUp }>
+                        <div className="alert alert-danger">
                             <a className="close" data-dismiss="alert">×</a>
-                              {(this.state.password !== this.state.rePassword)?'Incorrect confirm pass' : ''}
-                        </div>      */}
+                             Invalid email
+                        </div>     
                         <div className="mb-10">
                             <label>Email : </label>
                             <input 
@@ -66,7 +66,7 @@ class SignUp extends Component {
                                 />
                         </div>
 
-                    <div className=" mb-10">
+                    <div className="mb-10">
                             <label>Confirm Password : </label>
                             <input 
                                 type="password" 
@@ -80,7 +80,7 @@ class SignUp extends Component {
                         
                         <div className="text-center mt-20">
                             <button type="submit" className="btn btn-success" >Sign up</button> &nbsp;
-                            <button type="submit" className="btn btn-danger" onClick = { this.onClear}>Reset</button>
+                            <button type="button" className="btn btn-danger" onClick = { this.onClear}>Reset</button>
                         </div>
                    </form>
 
